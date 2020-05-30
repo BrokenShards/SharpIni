@@ -1,8 +1,8 @@
-#SharpIni
+# SharpIni
 A simple C# .ini file parser.
 
-##Usage
-###Document Loading
+## Usage
+### Document Loading
 The `Document` class represents an ini file and contains methods for loading
 the file data either from file, a list of strings, or even a string containing
 the entire file data.
@@ -27,7 +27,7 @@ if( !doc.LoadFromString( file_data ) )
 ...
 ~~~~
 
-###Sections
+### Sections
 The `Section` class is a list of associated key-value pairs represented by the
 `Key` class. Keys belonging to a section can be accessed with the `Section[string]`
 accessor, indexed by name.
@@ -61,7 +61,7 @@ if( height_key == null ) // Settings section does not contain height key.
 ...
 ~~~~
 
-###Keys
+### Keys
 The `Key` class, as previously mentioned, is a key-value pair that represents
 a key in an ini file. It is identified by `Key.Name` and its value can be
 accessed with `Key.Value`. It also has some convenience functions for converting
@@ -87,7 +87,7 @@ int width = width_key.ToUInt64();
 ...
 ~~~~
 
-###Saving to File
+### Saving to File
 All SharpIni classes return their in-file representations as a string on
 calling `ToString()`, so it can be as simple as:
 
