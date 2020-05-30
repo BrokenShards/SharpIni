@@ -1,0 +1,720 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpIni</name>
+    </assembly>
+    <members>
+        <member name="T:SharpIni.Document">
+            <summary>
+              A document made up of sections.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Document.#ctor">
+            <summary>
+              Constructs the instance.
+            </summary>
+        </member>
+        <member name="P:SharpIni.Document.Item(System.String)">
+            <summary>
+              The sections contained in the document indexed by their names.
+            </summary>
+            <param name="name">
+              The name of the section to access.
+            </param>
+            <returns>
+              The section with the given name if it exists, otherwise null.
+            </returns>
+        </member>
+        <member name="P:SharpIni.Document.Empty">
+            <summary>
+              If the document contains no sections.
+            </summary>
+        </member>
+        <member name="P:SharpIni.Document.Count">
+            <summary>
+              The amount of sections the document contains.
+            </summary>
+        </member>
+        <member name="P:SharpIni.Document.Sections">
+            <summary>
+              Gets the sections that make up the document indexed by their names.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Document.Contains(System.String)">
+            <summary>
+              If the document contains a section with the given name.
+            </summary>
+            <param name="section">
+              The section name.
+            </param>
+            <returns>
+              True if a section with the given name exists and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Contains(System.String,System.String)">
+            <summary>
+              If the given section in the document contains a key with the 
+              given name.
+            </summary>
+            <param name="section">
+              The section name.
+            </param>
+            <param name="key">
+              The key name.
+            </param>
+            <returns>
+              True if a key exists with the given name in the section and false 
+              otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Get(System.String)">
+            <summary>
+              Gets a section by name if it exists within the document.
+            </summary>
+            <param name="section">
+              The name of the section.
+            </param>
+            <returns>
+              The section with the given name if it exists, otherwise null.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Get(System.String,System.String)">
+            <summary>
+              Gets a key by name within a given section if it exists within
+              the document.
+            </summary>
+            <param name="section">
+              The name of the section.
+            </param>
+            <param name="key">
+              The name of the key.
+            </param>
+            <returns>
+              The key with the given name if it exists, otherwise null.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Add(SharpIni.Section,System.Boolean)">
+            <summary>
+              Add a section to the document.
+            </summary>
+            <param name="section">
+              The section to add.
+            </param>
+            <param name="replace">
+              Replace other section on name conflict.
+            </param>
+            <returns>
+              True if the section was added to the document and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Add(System.String,SharpIni.Key,System.Boolean,System.Boolean)">
+            <summary>
+              Adds a key to a section to the document.
+            </summary>
+            <param name="section">
+              The section.
+            </param>
+            <param name="key">
+              The key to add.
+            </param>
+            <param name="create">
+              Create section if it does not exist?
+            </param>
+            <param name="replace">
+              Replace other key on name conflict.
+            </param>
+            <returns>
+              True if the key was added to the document section and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Remove(System.String)">
+            <summary>
+              Removes a section from the document.
+            </summary>
+            <param name="section">
+              The name of the section to remove.
+            </param>
+            <returns>
+              True if the section was removed, false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Remove(System.String,System.String)">
+            <summary>
+              Removes a key from a section in the document.
+            </summary>
+            <param name="section">
+              The name of the section.
+            </param>
+            <param name="key">
+              The name of the key to remove.
+            </param>
+            <returns>
+              True if the key was removed, false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.Clear">
+            <summary>
+              Clears the document, removing all sections.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Document.LoadFromString(System.String)">
+            <summary>
+              Loads document data from a string.
+            </summary>
+            <param name="str">
+              The string containing document data.
+            </param>
+            <returns>
+              True on success or false on failure.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.LoadFromLines(System.String[])">
+            <summary>
+              Load document file data from an array of lines.
+            </summary>
+            <param name="lines">
+              The file lines to parse.
+            </param>
+            <returns>
+              True if successful and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.LoadFromFile(System.String)">
+            <summary>
+              Loads the document data from a file.
+            </summary>
+            <param name="path">
+              The path of the file to load.
+            </param>
+            <returns>
+              True if successful and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.ToString">
+            <summary>
+              The file text data.
+            </summary>
+            <returns>
+              The document text as it would be in file.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.IsValidSection(System.String)">
+            <summary>
+              Checks if the given line is a valid section header.
+            </summary>
+            <param name="line">
+              The line to parse.
+            </param>
+            <returns>
+              True if valid and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Document.IsValidKey(System.String)">
+            <summary>
+              Checks if the given line is a valid key.
+            </summary>
+            <param name="line">
+              The line to parse.
+            </param>
+            <returns>
+              True if valid and false otherwise.
+            </returns>
+        </member>
+        <member name="T:SharpIni.Key">
+            <summary>
+              A key/property containing a name and value.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Key.#ctor(System.String,System.String)">
+            <summary>
+              Constructs the instance with an optional name and value.
+            </summary>
+            <remarks>
+              <para>
+                If the given name is invalid, <see cref="P:SharpIni.Key.Name"/> will be set to 
+                <see cref="F:System.String.Empty"/> (See <see cref="M:SharpIni.Naming.IsValid(System.String)"/>).
+              </para>
+              <para>
+                If the given value is null, <see cref="P:SharpIni.Key.Value"/> will be set to 
+                <see cref="F:System.String.Empty"/>.
+              </para>
+            </remarks>
+            <param name="name">
+              The name of the key.
+            </param>
+            <param name="value">
+              The value of the key.
+            </param>
+        </member>
+        <member name="P:SharpIni.Key.Name">
+            <summary> 
+              The name of the key.
+            </summary>
+            <exception cref="T:System.ArgumentException">
+              If assigned to an invalid name (See <see cref="M:SharpIni.Naming.IsValid(System.String)"/>).
+            </exception>
+        </member>
+        <member name="P:SharpIni.Key.Value">
+            <summary>
+              The value of the key.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Key.LoadFromLine(System.String)">
+            <summary>
+              Parses a line from a file and assigns the data to the instance.
+            </summary>
+            <param name="line">
+              The line to parse.
+            </param>
+            <returns>
+              True if the string was parsed as a key and the name is valid, 
+              otherwise false.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Key.ToInt64">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a 64-bit signed integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToUInt64">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a 64-bit unsigned integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToInt32">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a 32-bit signed integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToUInt32">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a 32-bit unsigned integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToInt16">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a 16-bit signed integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToUInt16">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a 16-bit unsigned integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToInt8">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as an 8-bit signed integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToUInt8">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as an 8-bit unsigned integer.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToFloat">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a single-precision floating
+              point number.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToDouble">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a double-precision floating
+              point number.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+            <exception cref="T:System.OverflowException">
+              If the parsed value of <see cref="P:SharpIni.Key.Value"/> is out of range for 
+              the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToBool">
+            <summary>
+              Returns <see cref="P:SharpIni.Key.Value"/> parsed as a boolean value.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+              If <see cref="P:SharpIni.Key.Value"/> is null.
+            </exception>
+            <exception cref="T:System.FormatException">
+              If <see cref="P:SharpIni.Key.Value"/> is formatted incorrectly for the type.
+            </exception>
+        </member>
+        <member name="M:SharpIni.Key.ToString">
+            <summary>
+              Returns the key as it would appear in a file.
+            </summary>
+            <returns>
+              A string representing the key as it would appear in a file.
+              (<see cref="P:SharpIni.Key.Name"/> = <see cref="P:SharpIni.Key.Value"/>).
+            </returns>
+        </member>
+        <member name="M:SharpIni.Key.CreateFromLine(System.String)">
+            <summary>
+              Parses a line from a file and assigns the data to a new instance.
+            </summary>
+            <param name="line">
+              The line to parse.
+            </param>
+            <returns>
+              The newly created instance, null on failure.
+            </returns>
+        </member>
+        <member name="T:SharpIni.Logger">
+            <summary>
+              A class for handling logging to a file.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Logger.#ctor(System.Boolean)">
+            <summary>
+              Initialize a new instance of SimpleLogger class.
+            </summary>
+            <remarks>
+              Log file will be created automatically if it does not yet exist,
+              otherwise it can either append to the existing file or overwrite
+              it completely. The default behaviour is to overwrite.
+            </remarks>
+            <param name="append">
+              True to append to existing log file, False to overwrite and
+              create a new log file.
+            </param>
+        </member>
+        <member name="P:SharpIni.Logger.Instance">
+            <summary>
+              The single instance of the logger.
+            </summary>
+        </member>
+        <member name="P:SharpIni.Logger.OutputToConsole">
+            <summary>
+              If the logger should output to the console as well as the file.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Logger.Debug(System.String)">
+            <summary>
+              Log a debug message. The message will also output to the console
+              if running in a debug configuration.
+            </summary>
+            <param name="text">
+              Log message.
+            </param>
+        </member>
+        <member name="M:SharpIni.Logger.Error(System.String)">
+            <summary>
+              Log an error message.
+            </summary>
+            <param name="text">
+              Log message.
+            </param>
+        </member>
+        <member name="M:SharpIni.Logger.Fatal(System.String)">
+            <summary>
+              Log a fatal error message.
+            </summary>
+            <param name="text">
+              Log message.
+            </param>
+        </member>
+        <member name="M:SharpIni.Logger.Info(System.String)">
+            <summary>
+              Log an info message
+            </summary>
+            <param name="text">
+              Log message.
+            </param>
+        </member>
+        <member name="M:SharpIni.Logger.Warning(System.String)">
+            <summary>
+              Log a waning message.
+            </summary>
+            <param name="text">
+              Log message.
+            </param>
+        </member>
+        <member name="M:SharpIni.Logger.WriteFormattedLog(SharpIni.Logger.LogLevel,System.String)">
+            <summary>
+              Format a log message based on log level.
+            </summary>
+            <param name="level">
+              Log level.
+            </param>
+            <param name="text">
+              Log message.
+            </param>
+        </member>
+        <member name="M:SharpIni.Logger.WriteLine(System.String,System.Boolean)">
+            <summary>
+              Write a line of formatted log message into a log file.
+            </summary>
+            <param name="text">
+              Formatted log message.
+            </param>
+            <param name="append">
+              True to append, False to overwrite the file.
+            </param>
+            <exception>
+              See <see cref="M:System.IO.StreamWriter.#ctor(System.String,System.Boolean,System.Text.Encoding)"/> and
+              <see cref="M:System.IO.TextWriter.WriteLine(System.String)"/>.
+            </exception>
+        </member>
+        <member name="T:SharpIni.Logger.LogLevel">
+            <summary>
+              Supported log level
+            </summary>
+        </member>
+        <member name="T:SharpIni.Naming">
+            <summary>
+              Contains all methods involved with naming.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Naming.IsValid(System.String)">
+            <summary>
+              Checks if a string is a valid variable name.
+            </summary>
+            <param name="name">
+              The string to check.
+            </param>
+            <returns>
+              True if the string is a valid name and false otherwise.
+            </returns>
+        </member>
+        <member name="T:SharpIni.Section">
+            <summary>
+            	A section/header containing a name and the <see cref="T:SharpIni.Key"/>s it owns.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Section.#ctor(System.String)">
+            <summary>
+              Constructs the section with an optional name.
+            </summary>
+            <param name="name">
+              The name of the section.
+            </param>
+        </member>
+        <member name="P:SharpIni.Section.Item(System.String)">
+            <summary>
+              Allows access to sections' <see cref="T:SharpIni.Key"/>s by name.
+            </summary>
+            <remarks>
+              When assigning a <see cref="T:SharpIni.Key"/>, <see cref="M:SharpIni.Section.Add(SharpIni.Key,System.Boolean)"/>
+              will be called with the replace parameter set to true.
+            </remarks>
+            <param name="name">
+              The name of the <see cref="T:SharpIni.Key"/> to find.
+            </param>
+            <exception cref="T:System.ArgumentException">
+              Thrown when assigning if the call to <see cref="M:SharpIni.Section.Add(SharpIni.Key,System.Boolean)"/>
+              fails or if the <paramref name="name"/> does not have the same 
+              name as the value.
+            </exception>
+            <returns>
+              Returns a key with the given name if it is contained by the 
+              instance.
+            </returns>
+        </member>
+        <member name="P:SharpIni.Section.Name">
+            <summary>
+              The name of the section.
+            </summary>
+        </member>
+        <member name="P:SharpIni.Section.Keys">
+            <summary>
+              Get a dictionary of the keys mapped by their string names.
+            </summary>
+        </member>
+        <member name="P:SharpIni.Section.Empty">
+            <summary>
+              If the section contains no keys.
+            </summary>
+        </member>
+        <member name="P:SharpIni.Section.Count">
+            <summary>
+              The amount of keys in the section.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Section.Contains(System.String)">
+            <summary>
+              If the section contains a key with the given name.
+            </summary>
+            <param name="name">
+              The name to check.
+            </param>
+            <returns>
+              True if the section contains a key with the given name and false
+              otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Section.Get(System.String)">
+            <summary>
+              Returns the key mapped to the given name and null if it does 
+              not exist.
+            </summary>
+            <param name="name">
+              The name to check.
+            </param>
+            <returns>
+              The key with the given name or null if none exist.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Section.Add(SharpIni.Key,System.Boolean)">
+            <summary>
+              Adds a key to the section.
+            </summary>
+            <param name="key">
+              The key to add.
+            </param>
+            <param name="replace">
+              If the given key should overwrite keys with the same name.
+            </param>
+            <returns>
+              True if the key was sucessfully added to the section and false
+              otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Section.Remove(System.String)">
+            <summary>
+              Removes a key by name.
+            </summary>
+            <param name="name">
+              The name of the key to remove.
+            </param>
+            <returns>
+              True if the key was removed successfully and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Section.Clear">
+            <summary>
+              Clears the section, removing all keys.
+            </summary>
+        </member>
+        <member name="M:SharpIni.Section.LoadNameFromLine(System.String)">
+            <summary>
+              Loads the name from a section declaration line.
+            </summary>
+            <param name="line">
+              The line to parse name from.
+            </param>
+            <returns>
+              True if successful and false otherwise.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Section.LoadKeyFromLine(System.String,System.Boolean)">
+            <summary>
+              <see cref="M:SharpIni.Key.LoadFromLine(System.String)"/>
+            </summary>
+        </member>
+        <member name="M:SharpIni.Section.ToString">
+            <summary>
+              The entire section as it would be in file as a string.
+            </summary>
+            <returns>
+              The section as it would be in file as a string.
+            </returns>
+        </member>
+        <member name="M:SharpIni.Section.CreateFromLine(System.String)">
+            <summary>
+              Creates a new section and loads the name data from a line in a file.
+            </summary>
+            <param name="line">
+              File line.
+            </param>
+            <returns>
+              A section created from the file line on success or null on
+              failure.
+            </returns>
+        </member>
+    </members>
+</doc>
